@@ -1,2 +1,0 @@
-# jpmorgan
-Interview test code
