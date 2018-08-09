@@ -1,20 +1,13 @@
-package com.jp.morgan.service.impl.test;
+package test.jp.morgan.service.impl.test;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
+import test.jp.morgan.dto.OrderDTO;
+import test.jp.morgan.enums.Currency;
+import test.jp.morgan.enums.TradeType;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import com.jp.morgan.dto.OrderDTO;
-import com.jp.morgan.enums.Currency;
-import com.jp.morgan.enums.TradeType;
-import com.jp.morgan.service.ReportGeneratorService;
-import com.jp.morgan.service.impl.ReportGeneratorServiceImpl;
 
 public class ReportGeneratorServiceImplTest {
 	
@@ -46,13 +39,6 @@ public class ReportGeneratorServiceImplTest {
 		
 		orders.add(order1);
 		orders.add(order2);
-	}
-
-	@Test
-	public void testGenerateReport() {
-		ReportGeneratorService service = new ReportGeneratorServiceImpl();
-		service.generateReport(orders);
-		assert(true);
 	}
 
 }

@@ -1,12 +1,12 @@
-package jp.morgan.strategy.impl;
+package test.jp.morgan.strategy.impl;
+
+import test.jp.morgan.enums.Currency;
+import test.jp.morgan.strategy.SettlementDateStrategy;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
-import com.jp.morgan.enums.Currency;
-import com.jp.morgan.strategy.SettlementDateStrategy;
 
 public class CurrencyWeekendSettlementDateStrategy implements SettlementDateStrategy {
 

@@ -1,9 +1,9 @@
-package com.jp.morgan.dto;
+package test.jp.morgan.dto;
+
+import test.jp.morgan.enums.Currency;
+import test.jp.morgan.enums.TradeType;
 
 import java.util.Date;
-
-import com.jp.morgan.enums.Currency;
-import com.jp.morgan.enums.TradeType;
 
 public class OrderDTO {
 	String entity;
