@@ -9,10 +9,7 @@ import test.jp.morgan.strategy.SettlementDateStrategy;
 import test.jp.morgan.strategy.impl.CurrencyWeekendSettlementDateStrategy;
 import test.jp.morgan.util.JPMorganUtil;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ReportGeneratorServiceImpl implements ReportGeneratorService {
 
@@ -24,11 +21,11 @@ public class ReportGeneratorServiceImpl implements ReportGeneratorService {
 
     @Override
     public Map<Date, Double> getTradeList(List<OrderDTO> orders, TradeType tradeType) {
-        Map<Date, Double> tradeList = new HashMap();
+        Map tradeList = new HashMap<Date, Double>();
         orders.forEach(order -> {
             Currency currency = order.getCurrency();
             Date requestedSettlementDate = order.getSettlementDate();
-            Date finalSettlementDate = settlementDateStrategy.getSettlementDate(currency, requestedSettlementDate);
+            Date finalSettlementDate = settlementDateStrategy.getFinalSettlementDate(currency, requestedSettlementDate);
             dateOrderProcessor.processOrder(tradeType, tradeList, order, finalSettlementDate);
         });
         return tradeList;
@@ -36,7 +33,7 @@ public class ReportGeneratorServiceImpl implements ReportGeneratorService {
 
     @Override
     public Map<String, Double> getTradeRanking(List<OrderDTO> orders, TradeType tradeType) {
-        Map<String, Double> tradeRank = new HashMap();
+        Map tradeRank = new HashMap<String, Double>();
         orders.forEach(order -> {
             String entity = order.getEntity();
             entityOrderProcessor.processOrder(tradeType, tradeRank, order, entity);

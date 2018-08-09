@@ -7,40 +7,31 @@ import test.jp.morgan.enums.Currency;
 import test.jp.morgan.enums.TradeType;
 import test.jp.morgan.generator.ReportGenerator;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
 
 public class ReportGeneratorTest {
 
-    List<OrderDTO> orders;
+    private List<OrderDTO> orders;
 
     @Before
     public void setUp() throws Exception {
-        orders = new ArrayList<OrderDTO>();
 
-        OrderDTO order1 = new OrderDTO();
-        order1.setEntity("foo");
-        order1.setTradeType(TradeType.BUY);
-        order1.setAgreedFx(33.54);
-        order1.setCurrency(Currency.JPY);
-        order1.setInstructionDate(new SimpleDateFormat("dd-MM-yyyy").parse("01-01-2016"));
-        order1.setSettlementDate(new SimpleDateFormat("dd-MM-yyyy").parse("02-01-2016"));
-        order1.setUnits(200);
-        order1.setPricePerUnit(100.25D);
+        OrderDTO order1 = new OrderDTO("foo", TradeType.BUY, 33.54, Currency.JPY, "01-01-2016",
+                "02-01-2016", 200, 100.25D);
+        OrderDTO order2 = new OrderDTO("bar", TradeType.SELL, 0.22, Currency.AED, "05-01-2016",
+                "07-01-2016", 450, 150.50D);
+        OrderDTO order3 = new OrderDTO("bar", TradeType.BUY, 0.22, Currency.AED, "05-01-2016",
+                "02-01-2016", 450, 150.50D);
+        OrderDTO order4 = new OrderDTO("foo", TradeType.SELL, 0.22, Currency.AED, "05-01-2016",
+                "07-01-2016", 450, 150.50D);
+        OrderDTO order5 = new OrderDTO("foo", TradeType.BUY, 0.22, Currency.AED, "05-01-2016",
+                "02-01-2016", 450, 150.50D);
+        OrderDTO order6 = new OrderDTO("bar", TradeType.SELL, 0.22, Currency.AED, "05-01-2016",
+                "07-01-2016", 450, 150.50D);
 
-        OrderDTO order2 = new OrderDTO();
-        order2.setEntity("bar");
-        order2.setTradeType(TradeType.SELL);
-        order2.setAgreedFx(0.22);
-        order2.setCurrency(Currency.AED);
-        order2.setInstructionDate(new SimpleDateFormat("dd-MM-yyyy").parse("05-01-2016"));
-        order2.setSettlementDate(new SimpleDateFormat("dd-MM-yyyy").parse("07-01-2016"));
-        order2.setUnits(450);
-        order2.setPricePerUnit(150.50D);
-
-        orders.add(order1);
-        orders.add(order2);
+        orders = Arrays.asList(order1, order2, order3, order4, order5, order6);
     }
 
     @Test

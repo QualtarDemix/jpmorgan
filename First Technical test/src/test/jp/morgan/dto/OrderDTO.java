@@ -3,18 +3,36 @@ package test.jp.morgan.dto;
 import test.jp.morgan.enums.Currency;
 import test.jp.morgan.enums.TradeType;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class OrderDTO {
-	String entity;
-	TradeType tradeType;
-	Double agreedFx;
-	Currency currency;
-	Date instructionDate;
-	Date settlementDate;
-	Integer units;
-	Double pricePerUnit;
-	
+
+	private String entity;
+	private TradeType tradeType;
+	private Double agreedFx;
+	private Currency currency;
+	private Date instructionDate;
+	private Date settlementDate;
+	private Integer units;
+	private Double pricePerUnit;
+
+	public OrderDTO() {
+		//empty constructor
+	}
+
+	public OrderDTO(String entity, TradeType tradeType, Double agreedFx, Currency currency, String instructionDate,
+					String settlementDate, Integer units, Double pricePerUnit) throws Exception {
+		this.entity = entity;
+		this.tradeType = tradeType;
+		this.agreedFx = agreedFx;
+		this.currency = currency;
+		this.instructionDate = new SimpleDateFormat("dd-MM-yyyy").parse(instructionDate);
+		this.settlementDate = new SimpleDateFormat("dd-MM-yyyy").parse(instructionDate);
+		this.units = units;
+		this.pricePerUnit = pricePerUnit;
+	}
+
 	public String getEntity() {
 		return entity;
 	}
