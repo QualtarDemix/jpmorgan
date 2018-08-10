@@ -1,4 +1,4 @@
-package jp.morgan.enums;
+package test.jp.morgan.enums;
 
 public enum Operator {
 	add, subtract, multiply;

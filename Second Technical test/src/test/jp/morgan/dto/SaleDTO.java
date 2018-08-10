@@ -1,12 +1,25 @@
-package jp.morga.dto;
+package test.jp.morgan.dto;
 
-import jp.morgan.enums.Operator;
+import test.jp.morgan.enums.Operator;
 
 public class SaleDTO {
-	String fruitName;
-	Integer price;
-	Integer quantity;
-	Operator operator;
+
+	private String fruitName;
+	private Integer price;
+	private Integer quantity;
+	private Operator operator;
+
+	public SaleDTO() {
+		//default constructor
+	}
+
+	public SaleDTO(String fruitName, Integer price, Integer quantity, Operator operator) {
+		this.fruitName = fruitName;
+		this.price = price;
+		this.quantity = quantity;
+		this.operator = operator;
+	}
+
 	public String getFruitName() {
 		return fruitName;
 	}

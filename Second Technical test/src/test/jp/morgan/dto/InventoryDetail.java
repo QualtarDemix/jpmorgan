@@ -1,11 +1,21 @@
-package jp.morga.dto;
+package test.jp.morgan.dto;
 
 public class InventoryDetail {
-	
-	public String fruitName;
-	public Integer price;
-	public Integer occurences;
-	
+
+	private String fruitName;
+	private Integer price;
+	private Integer occurences;
+
+	public InventoryDetail() {
+		//default constructor
+	}
+
+	public InventoryDetail(String fruitName, Integer price, Integer occurences) {
+		this.fruitName = fruitName;
+		this.price = price;
+		this.occurences = occurences;
+	}
+
 	public String getFruitName()
 	{
 		return fruitName;
