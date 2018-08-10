@@ -6,10 +6,9 @@ import test.jp.morgan.enums.Operator;
 
 import java.util.regex.*;
 
-public class MessageParser {
+import static test.jp.morgan.constant.MessageConstants.*;
 
-    private static final String SPACE = " ";
-    private static final String DIGIT_REGEX = "\\d+";
+public class MessageParser {
 
     public SaleDTO parse(String message, MessageType messageType) {
         SaleDTO sale = null;
@@ -28,9 +27,9 @@ public class MessageParser {
                     sale = parseType3(splitMessage, matcher);
             }
         } catch (IllegalStateException e) {
-            System.err.println("Match operation failed");
+            System.err.println(MATCH_OPERATION_FAILED_MESSSAGE);
         } catch (PatternSyntaxException e) {
-            System.err.println("Incorrect formatting. Please check the message format again.");
+            System.err.println(INCORRECT_FORMAT_MESSAGE);
         }
         return sale;
     }
@@ -50,7 +49,7 @@ public class MessageParser {
     private SaleDTO parseType3(String[] splitMessage, Matcher matcher) {
         SaleDTO sale = parseType1(splitMessage[2], matcher);
         String operator = splitMessage[0];
-        sale.setOperator(Operator.valueOf(operator));
+        sale.setOperator(Operator.valueOf(operator.toLowerCase()));
         return sale;
     }
 }

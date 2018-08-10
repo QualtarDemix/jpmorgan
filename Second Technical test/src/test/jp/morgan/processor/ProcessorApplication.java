@@ -57,7 +57,8 @@ public class ProcessorApplication {
 				inventory.setPrice(newPrice);
 			}
 		});
-		int totalAdjustments = adjustments.get(fruitName) + 1;
+		Integer adjustmentForFruit = adjustments.get(fruitName);
+		int totalAdjustments = adjustmentForFruit != null ? adjustmentForFruit + 1 : 1;
 		adjustments.put(fruitName, totalAdjustments);
 	}
 
@@ -67,6 +68,7 @@ public class ProcessorApplication {
 		}
 		if(counter%50 == 0) {
 			Printer.printFiftiethMessage(adjustments);
+			System.exit(1);
 		}
 	}
 
